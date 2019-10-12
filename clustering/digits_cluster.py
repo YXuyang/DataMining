@@ -12,7 +12,6 @@ from sklearn.cluster import DBSCAN
 from sklearn.mixture import GaussianMixture
 from sklearn import mixture
 from sklearn.datasets import load_digits
-from sklearn.decomposition import PCA
 from sklearn.preprocessing import scale
 
 np.random.seed(42)
@@ -63,7 +62,10 @@ bench(AffinityPropagation(damping=0.5, preference=None),name="affinity", data=da
 #If not given, the bandwidth is estimated using sklearn.cluster.estimate_bandwidth;
 bench(MeanShift(bandwidth=0.8),name="MeanShift", data=data)
 
-#bench(SpectralClustering(n_clusters=n_digits),name="SpectralClustering", data=data)
+#参数n_clusters: integer, optional
+#The dimension of the projection subspace.
+#affinity:nearest_neighbors' ,precomputed
+bench(SpectralClustering(n_clusters=n_digits,affinity="nearest_neighbors"),name="SpectralClustering", data=data)
 
 
 #参数linkage: optional (default=”ward”)
@@ -83,8 +85,12 @@ bench(AgglomerativeClustering(linkage='average',n_clusters=n_digits),name="Agglo
 #This includes the point itself.
 bench(DBSCAN(eps=0.5,min_samples=1,metric='cosine'),name="DBSCAN", data=data)
 
-# 参数n_components: int, defaults to 1
-# The number of mixture components.
+#n_components ：高斯模型的个数，即聚类的目标个数
+#covariance_type : 通过EM算法估算参数时使用的协方差类型，默认是”full”
+#full：每个模型使用自己的一般协方差矩阵
+#tied：所用模型共享一个一般协方差矩阵
+#diag：每个模型使用自己的对角线协方差矩阵
+#spherical：每个模型使用自己的单一方差
 #bench(GaussianMixture(n_components=n_digits,covariance_type='full'),name="Gaussian", data=data)
 
 # in this case the seeding of the centers is deterministic, hence we run the

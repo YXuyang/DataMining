@@ -79,6 +79,8 @@ bench_k_means(KMeans(init='k-means++', n_clusters=n_digits, n_init=10),
 bench_k_means(KMeans(init='random', n_clusters=n_digits, n_init=10),
               name="random", data=data)
 
+
+
 # in this case the seeding of the centers is deterministic, hence we run the
 # kmeans algorithm only once with n_init=1
 pca = PCA(n_components=n_digits).fit(data)

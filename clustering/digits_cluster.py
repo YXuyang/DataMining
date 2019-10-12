@@ -36,12 +36,12 @@ print('init\t\ttime\tNMI\t\thomo\tcompl\t')
 
 def bench(estimator, name, data):
     t0 = time()
-    estimator.fit(data)
+    y_pred=estimator.fit_predict(data)
     print('%-9s\t%.2fs\t%.3f\t%.3f\t%.3f\t'
           % (name, (time() - t0),
-             metrics.normalized_mutual_info_score(labels, estimator.labels_,average_method='arithmetic'),
-             metrics.homogeneity_score(labels, estimator.labels_),
-             metrics.completeness_score(labels, estimator.labels_),
+             metrics.normalized_mutual_info_score(labels, y_pred,average_method='arithmetic'),
+             metrics.homogeneity_score(labels, y_pred),
+             metrics.completeness_score(labels, y_pred),
              ))
 
 bench(KMeans(init='random', n_clusters=n_digits, n_init=10),
@@ -65,7 +65,7 @@ bench(MeanShift(bandwidth=0.8),name="MeanShift", data=data)
 #参数n_clusters: integer, optional
 #The dimension of the projection subspace.
 #affinity:nearest_neighbors' ,precomputed
-bench(SpectralClustering(n_clusters=n_digits,affinity="nearest_neighbors"),name="SpectralClustering", data=data)
+bench(SpectralClustering(n_clusters=n_digits,affinity="nearest_neighbors"),name="Spectral", data=data)
 
 
 #参数linkage: optional (default=”ward”)
@@ -83,7 +83,7 @@ bench(AgglomerativeClustering(linkage='average',n_clusters=n_digits),name="Agglo
 #参数eps: float, optional  The maximum distance between two samples for them to be considered as in the same neighborhood
 #参数min_samples: int, optional  The number of samples (or total weight) in a neighborhood for a point to be considered as a core point.
 #This includes the point itself.
-bench(DBSCAN(eps=0.5,min_samples=1,metric='cosine'),name="DBSCAN", data=data)
+bench(DBSCAN(eps=5,min_samples=18),name="DBSCAN", data=data)
 
 #n_components ：高斯模型的个数，即聚类的目标个数
 #covariance_type : 通过EM算法估算参数时使用的协方差类型，默认是”full”
@@ -91,7 +91,7 @@ bench(DBSCAN(eps=0.5,min_samples=1,metric='cosine'),name="DBSCAN", data=data)
 #tied：所用模型共享一个一般协方差矩阵
 #diag：每个模型使用自己的对角线协方差矩阵
 #spherical：每个模型使用自己的单一方差
-#bench(GaussianMixture(n_components=n_digits,covariance_type='full'),name="Gaussian", data=data)
+bench(mixture.GaussianMixture(n_components=n_digits,covariance_type='full'),name="Gaussian", data=data)
 
 # in this case the seeding of the centers is deterministic, hence we run the
 # kmeans algorithm only once with n_init=1

@@ -128,8 +128,9 @@ bench(SpectralClustering(n_clusters=n_digits,affinity="nearest_neighbors"),name=
 <br>
 
 #### Ward Hierarchical Clustering：
-整个聚类过程其实是建立了一棵树，在建立过程中，可以通过第二步上设置一个阈值，当最近的两个类的距离大于这个阈值，则认为迭代终止
-<br>
+
+算法简述：<br>
+整个聚类过程其实是建立了一棵树，在建立过程中，可以通过第二步上设置一个阈值，当最近的两个类的距离大于这个阈值，则认为迭代终止。
 Ward 最小化所有聚类内的平方差总和。这是一种方差最小化(variance-minimizing )的优化方向， 这是与k-means 的目标函数相似的优化方法，但是用 agglomerative hierarchical的方法处理。
 <br>
 算法简述：<br>
@@ -150,13 +151,13 @@ bench(AgglomerativeClustering(linkage='ward',n_clusters=n_digits),name="WardHier
 
 #### Agglomerative Clustering：
 The AgglomerativeClustering 使用自下而上的方法进行层次聚类:开始是每一个对象是一个聚类， 并且聚类别相继合并在一起。 连接标准决定用于合并策略的度量。
-Maximum 或 complete linkage 最小化成对聚类间最远样本距离。
-Average linkage 最小化成对聚类间平均样本距离值。
-Single linkage 最小化成对聚类间最近样本距离值
-算法简述：
-1.将每一个元素单独定为一类
-2.重复：每一轮都合并指定距离(对指定距离的理解很重要)最小的类
-3.直到所有的元素都归为同一类
+Maximum 或 complete linkage 最小化成对聚类间最远样本距离。<br>
+Average linkage 最小化成对聚类间平均样本距离值。<br>
+Single linkage 最小化成对聚类间最近样本距离值<br>
+算法简述：<br>
+1.将每一个元素单独定为一类<br>
+2.重复：每一轮都合并指定距离(对指定距离的理解很重要)最小的类<br>
+3.直到所有的元素都归为同一类<br>
 <br>
 代码：<br>
 ```
@@ -169,14 +170,16 @@ bench(AgglomerativeClustering(linkage='average',n_clusters=n_digits),name="Agglo
 <br>
 
 #### DBSCAN：
-输入: 包含n个对象的数据库，半径e，最少数目MinPts;
-输出:所有生成的簇，达到密度要求。
-1. Repeat
-2. 从数据库中抽出一个未处理的点；
-3. IF抽出的点是核心点 THEN 找出所有从该点密度可达的对象，形成一个簇；
-4. ELSE 抽出的点是边缘点(非核心对象)，跳出本次循环，寻找下一个点；
-5. UNTIL 所有的点都被处理。
+算法简述：<br>
+输入: 包含n个对象的数据库，半径e，最少数目MinPts;<br>
+输出:所有生成的簇，达到密度要求。<br>
+1. Repeat<br>
+2. 从数据库中抽出一个未处理的点；<br>
+3. IF抽出的点是核心点 THEN 找出所有从该点密度可达的对象，形成一个簇；<br>
+4. ELSE 抽出的点是边缘点(非核心对象)，跳出本次循环，寻找下一个点；<br>
+5. UNTIL 所有的点都被处理。<br>
 <br>
+
 代码：<br>
 ```
 #参数eps: float, optional  The maximum distance between two samples for them to be considered as in the same neighborhood
@@ -187,7 +190,7 @@ bench(DBSCAN(eps=5,min_samples=18),name="DBSCAN", data=data)
 <br>
 
 #### Gaussian Mixture：
-聚类算法大多数采用相似度来判断，而相似度又大多数采用欧式距离长短来衡量，而GMM采用了新的判断依据—–概率，即通过属于某一类的概率大小来判断最终的归属类别
+聚类算法大多数采用相似度来判断，而相似度又大多数采用欧式距离长短来衡量，而GMM采用了新的判断依据—–概率，即通过属于某一类的概率大小来判断最终的归属类别<br>
 GMM的基本思想就是：任意形状的概率分布都可以用多个高斯分布函数去近似，也就是GMM就是有多个单高斯密度分布组成的，每一个Gaussian叫”Component”，线性的加成在一起就组成了GMM概率密度
 <br>
 参数：<br>

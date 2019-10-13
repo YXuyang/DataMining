@@ -81,11 +81,12 @@ bench(KMeans(init='k-means++', n_clusters=4, n_init=10),
               name="k-means++", data=data)
 
 
-bench(AffinityPropagation(damping=0.78, preference=None),name="AffinityPropagation",data=data)
+bench(AffinityPropagation(damping=0.75, preference=None),name="AffinityPropagation",data=data)
 
 bench(MeanShift(bandwidth=0.0751),name="MeanShift",data=data)
 
-bench(SpectralClustering(n_clusters=4,affinity="nearest_neighbors"),name="SpectralClustering",data=data)
+bench(SpectralClustering(n_clusters=4,assign_labels="discretize",
+                             random_state=0,affinity="nearest_neighbors"),name="SpectralClustering",data=data)
 
 bench(AgglomerativeClustering(linkage="ward", n_clusters=4),name="WardHierarchical",data=data)
 

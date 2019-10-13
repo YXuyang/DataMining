@@ -59,6 +59,7 @@ bench(KMeans(init='random', n_clusters=n_digits, n_init=10),name="k-means", data
 #### Affinity Propagation：
 算法简述：
 通过在样本对之间发送消息直到收敛的方式来创建聚类。然后使用少量模范样本作为聚类中心来描述数据集，而这些模范样本可以被认为是最能代表数据集中其它数据的样本。在样本对之间发送的消息表示一个样本作为另一个样本的模范样本的 适合程度，适合程度值在根据通信的反馈不断更新。更新迭代直到收敛，完成聚类中心的选取，因此也给出了最终聚类。
+<br>
 参数：<br>
 damping : float, optional, default: 0.5       防止更新过程中数值震荡<br>
 max_iter : int, optional, default: 200<br>
@@ -81,6 +82,7 @@ verbose : boolean, optional, default: False
 bench(AffinityPropagation(damping=0.5, preference=None),name="affinity", data=data)
 ```
 <br>
+
 #### Mean-Shift ：
 算法简述：
 1. 将每个对象看作一类，计算两两之间的最小距离；

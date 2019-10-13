@@ -103,25 +103,20 @@ bench(AffinityPropagation(damping=0.5, preference=None),name="affinity", data=da
 bench(MeanShift(bandwidth=0.8),name="MeanShift", data=data)
 ```
 <br>
+
 #### Spectral Clustering：
 
-算法简述：
+算法简述：<br>
 输入：样本集D=(x1,x2,...,xn)，相似矩阵的生成方式, 降维后的维度k1, 聚类方法，聚类后的维度k2
-　　　　输出： 簇划分C(c1,c2,...ck2).　
-
-　　　　1) 根据输入的相似矩阵的生成方式构建样本的相似矩阵S
-
-　　　　2）根据相似矩阵S构建邻接矩阵W，构建度矩阵D
-
-　　　　3）计算出拉普拉斯矩阵L
-
-　　　　4）构建标准化后的拉普拉斯矩阵D−1/2LD−1/2
-　　　　5）计算D−1/2LD−1/2最小的k1个特征值所各自对应的特征向量f
-　　　　6) 将各自对应的特征向量f组成的矩阵按行标准化，最终组成n×k1维的特征矩阵F
-
-　　　　7）对F中的每一行作为一个k1维的样本，共n个样本，用输入的聚类方法进行聚类，聚类维数为k2。
-
-　　　　8）得到簇划分C(c1,c2,...ck2).
+　　　　输出： 簇划分C(c1,c2,...ck2).　<br>
+　　　　1) 根据输入的相似矩阵的生成方式构建样本的相似矩阵S<br>
+　　　　2）根据相似矩阵S构建邻接矩阵W，构建度矩阵D<br>
+　　　　3）计算出拉普拉斯矩阵L<br>
+　　　　4）构建标准化后的拉普拉斯矩阵D−1/2LD−1/2<br>
+　　　　5）计算D−1/2LD−1/2最小的k1个特征值所各自对应的特征向量f<br>
+　　　　6) 将各自对应的特征向量f组成的矩阵按行标准化，最终组成n×k1维的特征矩阵F<br>
+　　　　7）对F中的每一行作为一个k1维的样本，共n个样本，用输入的聚类方法进行聚类，聚类维数为k2。<br>
+　　　　8）得到簇划分C(c1,c2,...ck2).<br>
 <br>
 代码：<br>
 ```
@@ -131,6 +126,7 @@ bench(MeanShift(bandwidth=0.8),name="MeanShift", data=data)
 bench(SpectralClustering(n_clusters=n_digits,affinity="nearest_neighbors"),name="Spectral", data=data)
 ```
 <br>
+
 #### Ward Hierarchical Clustering：
 整个聚类过程其实是建立了一棵树，在建立过程中，可以通过第二步上设置一个阈值，当最近的两个类的距离大于这个阈值，则认为迭代终止
 <br>

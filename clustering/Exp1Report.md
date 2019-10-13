@@ -3,6 +3,7 @@
   实验名称：Clustering with sklearn
 
 ## 一、实验要求
+
 数据集：<br>
 ![Image text](https://raw.githubusercontent.com/YXuyang/DataMining/master/clustering/img-folder/datas.png)
 
@@ -37,7 +38,7 @@
 数据集收集了大约20,000左右的新闻组文档，均匀分为20个不同主题的新闻组集合.在这里聚类cluster数设为4种
 
 
-### （二）聚类算法对比与评估
+### （二）聚类算法对比
 
 #### K-:means：
 算法简述：

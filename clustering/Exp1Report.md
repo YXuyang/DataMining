@@ -218,3 +218,9 @@ bench(mixture.GaussianMixture(n_components=n_digits,covariance_type='full'),name
 ```
 <br>
 ## 三、实验结果
+
+### digit数据集:
+![Image text](https://raw.githubusercontent.com/YXuyang/DataMining/master/clustering/img-folder/datas.png)
+
+### document数据集:
+![Image text](https://raw.githubusercontent.com/YXuyang/DataMining/master/clustering/img-folder/datas.png)

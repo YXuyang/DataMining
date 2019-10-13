@@ -107,8 +107,8 @@ bench(MeanShift(bandwidth=0.8),name="MeanShift", data=data)
 #### Spectral Clustering：
 
 算法简述：<br>
-输入：样本集D=(x1,x2,...,xn)，相似矩阵的生成方式, 降维后的维度k1, 聚类方法，聚类后的维度k2
-　　　　输出： 簇划分C(c1,c2,...ck2).　<br>
+输入：样本集D=(x1,x2,...,xn)，相似矩阵的生成方式, 降维后的维度k1, 聚类方法，聚类后的维度k2 <br>
+输出： 簇划分C(c1,c2,...ck2).　<br>
 　　　　1) 根据输入的相似矩阵的生成方式构建样本的相似矩阵S<br>
 　　　　2）根据相似矩阵S构建邻接矩阵W，构建度矩阵D<br>
 　　　　3）计算出拉普拉斯矩阵L<br>
@@ -132,11 +132,11 @@ bench(SpectralClustering(n_clusters=n_digits,affinity="nearest_neighbors"),name=
 <br>
 Ward 最小化所有聚类内的平方差总和。这是一种方差最小化(variance-minimizing )的优化方向， 这是与k-means 的目标函数相似的优化方法，但是用 agglomerative hierarchical的方法处理。
 <br>
-算法简述：
-1 将每个对象看作一类，计算两两之间的最小距离；
-2 将距离最小的两个类合并成一个新类；
-3 重新计算新类与所有类之间的距离；
-4 重复2、3，直到所有类最后合并成一类。
+算法简述：<br>
+1 将每个对象看作一类，计算两两之间的最小距离；<br>
+2 将距离最小的两个类合并成一个新类；<br>
+3 重新计算新类与所有类之间的距离；<br>
+4 重复2、3，直到所有类最后合并成一类。<br>
 <br>
 代码：<br>
 ```
@@ -147,6 +147,7 @@ Ward 最小化所有聚类内的平方差总和。这是一种方差最小化(va
 bench(AgglomerativeClustering(linkage='ward',n_clusters=n_digits),name="WardHierarchical", data=data)
 ```
 <br>
+
 #### Agglomerative Clustering：
 The AgglomerativeClustering 使用自下而上的方法进行层次聚类:开始是每一个对象是一个聚类， 并且聚类别相继合并在一起。 连接标准决定用于合并策略的度量。
 Maximum 或 complete linkage 最小化成对聚类间最远样本距离。
@@ -166,6 +167,7 @@ Single linkage 最小化成对聚类间最近样本距离值
 bench(AgglomerativeClustering(linkage='average',n_clusters=n_digits),name="Agglomerative", data=data)
 ```
 <br>
+
 #### DBSCAN：
 输入: 包含n个对象的数据库，半径e，最少数目MinPts;
 输出:所有生成的簇，达到密度要求。
@@ -183,6 +185,7 @@ bench(AgglomerativeClustering(linkage='average',n_clusters=n_digits),name="Agglo
 bench(DBSCAN(eps=5,min_samples=18),name="DBSCAN", data=data)
 ```
 <br>
+
 #### Gaussian Mixture：
 聚类算法大多数采用相似度来判断，而相似度又大多数采用欧式距离长短来衡量，而GMM采用了新的判断依据—–概率，即通过属于某一类的概率大小来判断最终的归属类别
 GMM的基本思想就是：任意形状的概率分布都可以用多个高斯分布函数去近似，也就是GMM就是有多个单高斯密度分布组成的，每一个Gaussian叫”Component”，线性的加成在一起就组成了GMM概率密度

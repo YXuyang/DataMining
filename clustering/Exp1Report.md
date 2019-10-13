@@ -3,7 +3,7 @@
   实验名称：Clustering with sklearn
 
 ## 一、实验要求
-数据集：
+数据集：<br>
 ![Image text](https://raw.githubusercontent.com/YXuyang/DataMining/master/clustering/img-folder/datas.png)
 
 实验要求：测试sklearn中以下聚类算法在以上两个数据集上的聚类效果

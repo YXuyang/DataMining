@@ -194,9 +194,8 @@ bench(DBSCAN(eps=5,min_samples=18),name="DBSCAN", data=data)
 GMM的基本思想就是：任意形状的概率分布都可以用多个高斯分布函数去近似，也就是GMM就是有多个单高斯密度分布组成的，每一个Gaussian叫”Component”，线性的加成在一起就组成了GMM概率密度
 <br>
 参数：<br>
-1. n_components: 混合高斯模型个数，默认为 1 <br>
-2. covariance_type: 协方差类型，包括 {‘full’,‘tied’, ‘diag’, ‘spherical’} 四种，full 指每个分量有各自不同的标准协方差矩阵，完全协方差矩阵（元素都不为零）， tied 指所有分量有相同的标准协方差矩阵（HMM 会用到），diag 指每个分量有各自不同对角协方差矩阵（非对角为零，对角不为零）， spherical 指每个分量有各自不同的简单协方差矩阵，球面协方差矩阵（非对角为零，对角完全相同，球面特性），默认‘full’ 完全协方差矩阵 <br>
-
+1. n_components: 混合高斯模型个数，默认为 1
+2. covariance_type: 协方差类型，包括 {‘full’,‘tied’, ‘diag’, ‘spherical’} 四种，full 指每个分量有各自不同的标准协方差矩阵，完全协方差矩阵（元素都不为零）， tied 指所有分量有相同的标准协方差矩阵（HMM 会用到），diag 指每个分量有各自不同对角协方差矩阵（非对角为零，对角不为零）， spherical 指每个分量有各自不同的简单协方差矩阵，球面协方差矩阵（非对角为零，对角完全相同，球面特性），默认‘full’ 完全协方差矩阵
 3. tol：EM 迭代停止阈值，默认为 1e-3. <br>
 4. reg_covar: 协方差对角非负正则化，保证协方差矩阵均为正，默认为 0 <br>
 5. max_iter: 最大迭代次数，默认 100 <br>

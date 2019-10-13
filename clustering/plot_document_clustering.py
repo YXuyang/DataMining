@@ -113,7 +113,7 @@ if len(args) > 0:
 
 
 # #############################################################################
-# Load some categories from the training set
+# Load some categories from the training set 从训练集中加载某些类别
 categories = [
     'alt.atheism',
     'talk.religion.misc',
@@ -123,7 +123,7 @@ categories = [
 # Uncomment the following to do the analysis on all the categories
 # categories = None
 
-print("Loading 20 newsgroups dataset for categories:")
+print("Loading 20 newsgroups dataset for categories:")#正在加载类别的20个新闻组数据集：
 print(categories)
 
 dataset = fetch_20newsgroups(subset='all', categories=categories,
@@ -137,8 +137,9 @@ labels = dataset.target
 true_k = np.unique(labels).shape[0]
 
 print("Extracting features from the training dataset "
-      "using a sparse vectorizer")
+      "using a sparse vectorizer")#使用稀疏矢量器从训练数据集中提取特征
 t0 = time()
+print(opts.n_features)
 if opts.use_hashing:
     if opts.use_idf:
         # Perform an IDF normalization on the output of HashingVectorizer
@@ -164,6 +165,7 @@ print()
 if opts.n_components:
     print("Performing dimensionality reduction using LSA")
     t0 = time()
+    print("LSA")
     # Vectorizer results are normalized, which makes KMeans behave as
     # spherical k-means for better results. Since LSA/SVD results are
     # not normalized, we have to redo the normalization.

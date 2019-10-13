@@ -9,7 +9,6 @@ from sklearn.cluster import MeanShift
 from sklearn.cluster import SpectralClustering
 from sklearn.cluster import AgglomerativeClustering
 from sklearn.cluster import DBSCAN
-from sklearn.mixture import GaussianMixture
 from sklearn import mixture
 from sklearn.datasets import load_digits
 from sklearn.preprocessing import scale
@@ -31,13 +30,13 @@ print("n_digits: %d, \t n_samples %d, \t n_features %d"
 
 
 print(82 * '_')
-print('init\t\ttime\tNMI\t\thomo\tcompl\t')
+print('%-18s\t%-5s\t%-5s\t%-5s\t%-5s'%("init","time","NMI","homo","compl"))
 
 
 def bench(estimator, name, data):
     t0 = time()
     y_pred=estimator.fit_predict(data)
-    print('%-9s\t%.2fs\t%.3f\t%.3f\t%.3f\t'
+    print('%-18s\t%.2fs\t%.3f\t%.3f\t%.3f\t'
           % (name, (time() - t0),
              metrics.normalized_mutual_info_score(labels, y_pred,average_method='arithmetic'),
              metrics.homogeneity_score(labels, y_pred),
@@ -72,13 +71,13 @@ bench(SpectralClustering(n_clusters=n_digits,affinity="nearest_neighbors"),name=
 #ward minimizes the variance of the clusters being merged.
 #参数n_clusters: int, default
 #The number of clusters to find.
-bench(AgglomerativeClustering(linkage='ward',n_clusters=n_digits),name="WardHiera", data=data)
+bench(AgglomerativeClustering(linkage='ward',n_clusters=n_digits),name="WardHierarchical", data=data)
 
 # 参数linkage:  {“ward”, “complete”, “average”, “single”}, optional
 # average uses the average of the distances of each observation of the two sets.
 # 参数n_clusters: int, default
 # The number of clusters to find
-bench(AgglomerativeClustering(linkage='average',n_clusters=n_digits),name="Agglomera", data=data)
+bench(AgglomerativeClustering(linkage='average',n_clusters=n_digits),name="Agglomerative", data=data)
 
 #参数eps: float, optional  The maximum distance between two samples for them to be considered as in the same neighborhood
 #参数min_samples: int, optional  The number of samples (or total weight) in a neighborhood for a point to be considered as a core point.
